@@ -1,0 +1,108 @@
+lab 5
+=======
+
+IN Operator
+------------
+
+ select * from students where age in ( 21, 22, 23);
+
++-----------+-------------+------+------+
+| studentid | name        | age  | dno  |
++-----------+-------------+------+------+
+|       101 | Midhun K    |   21 |    1 |
+|       103 |  Sidharth M |   21 |    1 |
++-----------+-------------+------+------+
+
+Nested Query / Sub Query
+------------------------
+
+in sub query first works the inner query.
+if more than 1 row return than use in operator otherwise = operator
+
+Q) get list students who have issused at least one book? 
+
+select students.studentid,name from students,bookissue where students.studentid = bookissue.id ;
++-----------+-------------+
+| studentid | name        |
++-----------+-------------+
+|       101 | Midhun K    |
+|       101 | Midhun K    |
+|       102 | Ann Mariya  |
+|       102 | Ann Mariya  |
+|       103 |  Sidharth M |
++-----------+-------------+
+
+using nested query
+-----------------
+
+select studentid,name from students where studentid IN( select id from bookissue);
++-----------+-------------+
+| studentid | name        |
++-----------+-------------+
+|       101 | Midhun K    |
+|       102 | Ann Mariya  |
+|       103 |  Sidharth M |
++-----------+-------------+
+
+Q) get the list of books thst have issued?
+
+select bookid,title,author from books where books.bookid IN ( select book_id from bookissue);
++--------+---------------------------+---------------------+
+| bookid | title                     | author              |
++--------+---------------------------+---------------------+
+|      1 |  Database Systems         | Ramez Elmasri       |
+|      2 | Operating System Concepts | Silberschatz        |
+|      3 | Computer Networks         | Andrew S. Tanenbaum |
+|      4 | Algorithms                | Cormen              |
++--------+---------------------------+---------------------+
+
+Q)get the list of books thst have never issued?
+
+select bookid,title,author from books where books.bookid NOT IN ( select book_id from bookissue);
++--------+-----------+--------+
+| bookid | title     | author |
++--------+-----------+--------+
+|      5 | Turbo C++ | Stern  |
++--------+-----------+--------+
+
+Qrder-by Clause
+---------------
+|
+----->data arrangements
+        |
+        --->Ascending
+        |
+        --->Descending
+
+note:- order by <attribute_name> <Ascending/Descending>
+
+elect studentid,name from  students order by studentid asc;
++-----------+-------------+
+| studentid | name        |
++-----------+-------------+
+|       101 | Midhun K    |
+|       102 | Ann Mariya  |
+|       103 |  Sidharth M |
+|       104 | Jasir       |
++-----------+-------------+
+
+
+select studentid,name from  students order by studentid desc, name asc;
++-----------+-------------+
+| studentid | name        |
++-----------+-------------+
+|       104 | Jasir       |
+|       103 |  Sidharth M |
+|       102 | Ann Mariya  |
+|       101 | Midhun K    |
++-----------+-------------+
+
+SET Operation
+-------------
+
+1) Union
+2) Intersection
+3) Set Defference
+
+
+Q) Get a list all students who have issused books and all students from 'MCA' department
