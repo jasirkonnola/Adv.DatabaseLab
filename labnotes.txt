@@ -196,4 +196,32 @@ select books.title,books.author from books inner join bookissue on books.bookid 
 
 Q) Get student who have not issued any book (student id, name)
 
+select students.studentid, students.name from students left join bookissue on students.studentid=bookissue.id where bookissue.id is NUll;
++-----------+-------+
+| studentid | name  |
++-----------+-------+
+|       104 | Jasir |
++-----------+-------+
 
+Q)find students who have issued book but not returned yet (studentid, name, title, issued date, return date)
+
+select * from bookissue;
++--------+-----------+------------+-------------+
+| bookid | studentid | issue_date | return_date |
++--------+-----------+------------+-------------+
+|      1 |       101 | 2025-03-01 | 2025-03-15  |
+|      2 |       102 | 2025-03-01 | 2025-03-15  |
+|      3 |       103 | 2025-03-02 | 2025-03-16  |
+|      4 |       104 | 2025-03-02 | 2025-03-16  |
+|      1 |       104 | 2025-03-03 | 2025-03-17  |
++--------+-----------+------------+-------------+
+
+insert into bookissue value(5,104,"2024-06-17",NULL);
+
+
+select students.studentid,students.name,books.title,bookissue.issue_date,bookissue.return_date from students inner join bookissue ON students.studentid = bookissue.id inner join books ON books.bookid = bookissue.book_id where bookissue.return_date is NUll;
++-----------+-------+-----------+------------+-------------+
+| studentid | name  | title     | issue_date | return_date |
++-----------+-------+-----------+------------+-------------+
+|       104 | Jasir | Turbo C++ | 2024-06-17 | NULL        |
++-----------+-------+-----------+------------+-------------+
