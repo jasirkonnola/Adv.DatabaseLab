@@ -80,6 +80,27 @@ select count(distinct bookid) as books_issused from bookissues;
 Group by>>
 Q)count how many books each student has issuesd (include student name,total number of books)
 
+select bookissues.id,count(bookid) as total_no_of_books from bookissues group by id;
++------+-------------------+
+| id   | total_no_of_books |
++------+-------------------+
+|  101 |                 2 |
+|  102 |                 3 |
+|  103 |                 4 |
+|  104 |                 1 |
+|  105 |                 2 |
+|  106 |                 1 |
+|  107 |                 1 |
+|  109 |                 1 |
++------+-------------------+
+
+Q)list the book title with the hightest price
+select title,price from books where price =(select max(price) from books);
++-----------------+---------+
+| title           | price   |
++-----------------+---------+
+| cloud computing | 2000.00 |
++-----------------+---------+
 
 
 
