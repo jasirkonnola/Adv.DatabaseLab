@@ -1,0 +1,85 @@
+Aggregate function in my sql
+  funtion that can operate on a set of values and return value
+1.MIN( ) -- returns minimum value in the set
+2.MAX( ) -- returns maximum value in the set 
+          ex:- select min(age) from students;
+3.Avg( ) -- returns an average value of the set
+4.sum( ) -- returns sum of set of value
+5.count( ) -- returns total number of rows in that set
+          note:- ignore the 'NULL' value except count function.
+
+
+---------------------------------------------------------------------------------
+6))Group by -- group rows that contains similar values in the attribute provided.
+----------------------------------------------------------------------------------
+Syntax
+    Select <attribute_list> from <table_name> Group by <attribute_name>
+
+Q)count the number of students in each department
+select count(*) 
+from students 
+Group by dno;
++----------+
+| count(*) |
++----------+
+|        3 |
+|        4 |
+|        3 |
++----------+
+
+rename count to total no.of students
+select count(*) as total_no_0f_students from students Group by dno;
++----------------------+
+| total_no_0f_students |
++----------------------+
+|                    3 |
+|                    4 |
+|                    3 |
++----------------------+
+
+Q)get total number of students
+select count(*) as total_no_0f_students from students;
++----------------------+
+| total_no_0f_students |
++----------------------+
+|                   10 |
++----------------------+
+
+Q)get total number of books
+select count(*) as total_no_0f_books from books;
++-------------------+
+| total_no_0f_books |
++-------------------+
+|                10 |
++-------------------+
+
+Q)find the average price of books
+select avg(price) as avg_price from books;
++------------+
+| avg_price  |
++------------+
+| 734.897000 |
++------------+
+
+Q)find the most expensive and cheapest book
+select min(price) as min_price,max(price) as max_price from books;
++-----------+-----------+
+| min_price | max_price |
++-----------+-----------+
+|    100.00 |   2000.00 |
++-----------+-----------+
+
+Q)count the total number of book issued
+select count(distinct bookid) as books_issused from bookissues;
++---------------+
+| books_issused |
++---------------+
+|             8 |
++---------------+
+
+Group by>>
+Q)count how many books each student has issuesd (include student name,total number of books)
+
+
+
+
