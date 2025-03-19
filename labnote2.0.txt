@@ -1,3 +1,4 @@
+                                                                        17-03-2025
 Aggregate function in my sql
   funtion that can operate on a set of values and return value
 1.MIN( ) -- returns minimum value in the set
@@ -101,6 +102,33 @@ select title,price from books where price =(select max(price) from books);
 +-----------------+---------+
 | cloud computing | 2000.00 |
 +-----------------+---------+
+
+                                                                            h
+7)) Having clause
+syntax:-
+select <attribute_list> from <table_name> Group by <attribute_name> Having <condition>
+
+Q)find department more the 5 students
+select dno,count(studentid) as tottal_no_of_students from students group by dno having count(studentid)>5;
++------+-----------------------+
+| dno  | tottal_no_of_students |
++------+-----------------------+
+|    1 |                     7 |
++------+-----------------------+
+
+here change dno ----> dname
+select dname,count(studentid) as tottal_no_of_students from students inner join departments on students.dno = departments.dno group by dname having count(studentid)>5;
++-------+-----------------------+
+| dname | tottal_no_of_students |
++-------+-----------------------+
+| MCA   |                     7 |
++-------+-----------------------+
+
+Q)count the number of students in the each department
+Q)count how many books each student has issused
+Q)find the averge book price pre author
+Q)find the total number of issused per department
+Q)find the number of issued per day
 
 
 
