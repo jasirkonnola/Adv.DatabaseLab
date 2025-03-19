@@ -126,7 +126,17 @@ select dname,count(studentid) as tottal_no_of_students from students inner join 
 
 group by:-
 Q)count the number of students in the each department
+select departments.dname,count(students.dno) as total_no_of_students from departments inner join students on departments.dno = students.dno group by dname;
++-------+----------------------+
+| dname | total_no_of_students |
++-------+----------------------+
+| MBA   |                    4 |
+| MCA   |                    7 |
+| MTECH |                    4 |
++-------+----------------------+
+
 Q)count how many books each student has issused
+
 Q)find the averge book price pre author
 Q)find the total number of issused per department
 Q)find the number of issued per day
