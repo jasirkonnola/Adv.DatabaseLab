@@ -136,9 +136,45 @@ select departments.dname,count(students.dno) as total_no_of_students from depart
 +-------+----------------------+
 
 Q)count how many books each student has issused
+select students.name,count(bookissues.issue_date) as no_of_issued from students inner join bookissues on students.studentid = bookissues.id group by studentid;
++-------------+--------------+
+| name        | no_of_issued |
++-------------+--------------+
+| Midhun K    |            2 |
+| Ann Mariya  |            3 |
+|  Sidharth M |            4 |
+| Jasir       |            1 |
+| layla       |            2 |
+| appu        |            1 |
+| jo          |            1 |
+| dilshad     |            1 |
++-------------+--------------+
 
 Q)find the averge book price pre author
+ select author,avg(price) as avg_price from books group by author;
++---------------------+-------------+
+| author              | avg_price   |
++---------------------+-------------+
+| Ramez Elmasri       |  500.000000 |
+| Silberschatz        |  650.000000 |
+| Andrew S. Tanenbaum |  700.000000 |
+| Cormen              |  100.000000 |
+| Stern               | 1000.000000 |
+| NEW                 |  533.323333 |
+| Isco                |  799.000000 |
+| newman              | 2000.000000 |
++---------------------+-------------+
+
 Q)find the total number of issused per department
+ SELECT departments.dname, COUNT(bookissues.bookid) AS book_count FROM students JOIN departments ON students.dno = departments.dno JOIN bookissues ON students.studentid = bookissues.id GROUP BY departments.dno, departments.dname;
++-------+------------+
+| dname | book_count |
++-------+------------+
+| MBA   |          4 |
+| MCA   |          7 |
+| MTECH |          4 |
++-------+------------+
+
 Q)find the number of issued per day
 
 having :-
