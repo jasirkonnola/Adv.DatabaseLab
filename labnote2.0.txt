@@ -103,7 +103,7 @@ select title,price from books where price =(select max(price) from books);
 | cloud computing | 2000.00 |
 +-----------------+---------+
 
-                                                                            h
+                                                                            19-03-2025
 7)) Having clause
 syntax:-
 select <attribute_list> from <table_name> Group by <attribute_name> Having <condition>
@@ -124,11 +124,15 @@ select dname,count(studentid) as tottal_no_of_students from students inner join 
 | MCA   |                     7 |
 +-------+-----------------------+
 
+group by:-
 Q)count the number of students in the each department
 Q)count how many books each student has issused
 Q)find the averge book price pre author
 Q)find the total number of issused per department
 Q)find the number of issued per day
 
-
+having :-
+Q)find the students who have issused more than 2 books
+Q)find author who have written more than 3 books
+Q)find the department that have issued atleast 10 books
 
