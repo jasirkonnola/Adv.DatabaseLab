@@ -102,6 +102,7 @@ select title,price from books where price =(select max(price) from books);
 +-----------------+---------+
 | cloud computing | 2000.00 |
 +-----------------+---------+
+-----------------------------------------------------------------------------------------------------
 
                                                                             19-03-2025
 7)) Having clause
@@ -181,4 +182,72 @@ having :-
 Q)find the students who have issused more than 2 books
 Q)find author who have written more than 3 books
 Q)find the department that have issued atleast 10 books
+------------------------------------------------------------------------------------------------------------------------------------
+                                                                       26-03-2025
+View:-
+Views is a virtual table
+   -> stores only schema
+   -> no value
+        create view <view_name> as(select studentid,name from students)
+-> Security
+-> Easiness
+
+
+create view studentview as(select studentid,name from students);
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select * from studentview;
++-----------+---------------+
+| studentid | name          |
++-----------+---------------+
+|       101 | Midhun K      |
+|       102 | Ann Mariya    |
+|       103 |  Sidharth M   |
+|       104 | Jasir         |
+|       105 | layla         |
+|       106 | appu          |
+|       107 | jo            |
+|       108 | abhi          |
+|       109 | dilshad       |
+|       110 | rax           |
+|       111 | John Doe      |
+|       112 | Jane Smith    |
+|       113 | Tom Brown     |
+|       114 | Emily White   |
+|       115 | Michael Black |
++-----------+---------------+
+
+``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+select * from departments inner join students on students.dno = departments.dno inner join bookissues on bookissues.id = students.studentid inner join books on books.bookid = bookissues.bookid;
+
+select distinct * from departments inner join students on students.dno = departments.dno inner join bookissues on bookissues.id = students.studentid inner join books on books.bookid = bookissues.bookid;
+
+select distinct * from departments natural join students inner join bookissues on bookissues.id = students.studentid natural join books ;
+
+create view studentinfo as(select * from departments natural join students inner join bookissues on bookissues.id = students.studentid natural join books);
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select * from studentinfo;
++--------+-----+-------+-----------+-------------+------+------+------------+-------------+---------------------------+---------------------+---------+
+| bookid | dno | dname | studentid | name        | age  | id   | issue_date | return_date | title                     | author              | price   |
++--------+-----+-------+-----------+-------------+------+------+------------+-------------+---------------------------+---------------------+---------+
+|      6 |   3 | MBA   |       105 | layla       |   25 |  105 | 2025-01-12 | NULL        | ADV DBMS                  | NEW                 |  499.99 |
+|      6 |   3 | MBA   |       105 | layla       |   25 |  105 | 2025-03-23 | 2025-03-25  | ADV DBMS                  | NEW                 |  499.99 |
+|      8 |   3 | MBA   |       107 | jo          |   24 |  107 | 2025-02-20 | NULL        | ADV X                     | NEW                 |  599.99 |
+|      1 |   3 | MBA   |       109 | dilshad     |   22 |  109 | 2025-03-01 | NULL        |  Database Systems         | Ramez Elmasri       |  500.00 |
+|      1 |   1 | MCA   |       101 | Midhun K    |   21 |  101 | 2024-02-16 | 2024-02-22  |  Database Systems         | Ramez Elmasri       |  500.00 |
+|      2 |   1 | MCA   |       101 | Midhun K    |   21 |  101 | 2024-02-22 | 2024-02-24  | Operating System Concepts | Silberschatz        |  650.00 |
+|      4 |   1 | MCA   |       103 |  Sidharth M |   21 |  103 | 2024-03-01 | 2024-03-05  | Algorithms                | Cormen              |  100.00 |
+|      5 |   1 | MCA   |       103 |  Sidharth M |   21 |  103 | 2025-03-01 | 2025-03-02  | Turbo C++                 | Stern               | 1000.00 |
+|      5 |   1 | MCA   |       103 |  Sidharth M |   21 |  103 | 2025-03-02 | 2025-03-03  | Turbo C++                 | Stern               | 1000.00 |
+|      7 |   1 | MCA   |       103 |  Sidharth M |   21 |  103 | 1999-09-09 | 2000-02-20  | ADV OP                    | NEW                 |  499.99 |
+|      7 |   1 | MCA   |       106 | appu        |   24 |  106 | 2025-01-13 | NULL        | ADV OP                    | NEW                 |  499.99 |
+|      3 |   2 | MTECH |       102 | Ann Mariya  |   30 |  102 | 2024-02-19 | 2024-02-20  | Computer Networks         | Andrew S. Tanenbaum |  700.00 |
+|      2 |   2 | MTECH |       102 | Ann Mariya  |   30 |  102 | 2024-04-01 | 2024-04-20  | Operating System Concepts | Silberschatz        |  650.00 |
+|      8 |   2 | MTECH |       102 | Ann Mariya  |   30 |  102 | 2002-12-30 | 2003-01-01  | ADV X                     | NEW                 |  599.99 |
+|      5 |   2 | MTECH |       104 | Jasir       |   22 |  104 | 2024-06-17 | NULL        | Turbo C++                 | Stern               | 1000.00 |
++--------+-----+-------+-----------+-------------+------+------+------------+-------------+---------------------------+---------------------+---------+
+
+``````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+
 
