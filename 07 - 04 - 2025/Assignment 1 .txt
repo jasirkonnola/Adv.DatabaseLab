@@ -1,0 +1,11 @@
+CREATE TABLE books (accno INT PRIMARY KEY AUTO_INCREMENT,title VARCHAR(100) NOT NULL UNIQUE,author VARCHAR(50) NOT NULL,price FLOAT(4,2),type ENUM('lending','reference'),availability ENUM('yes','no'),publisherid INT);
+
+CREATE TABLE publishers(publisherid INT AUTO_INCREMENT, name VARCHAR(50) UNIQUE NOTNULL, address VARCHAR(100));
+alter table books add constraint books_fkey_publisherid foreign key(publisherid) references publishers(publisherid);
+
+CREATE TABLE members(memberid INT PRIMARY KEY AUTO_INCREMENT,name VARCHAR(50) NOT NULL, address VARCHAR(100), type ENUM('staff','student'));
+
+CREATE TABLE issues( issueid INT PRIMARY KEY AUTO_INCREMENT, memberid INT, accno INT,issuedate DATE, duedate DATE,FOREIGN KEY(memberid) REFERENCES members(member
+id),FOREIGN KEY(accno) REFERENCES books(accno));
+
+CREATE TABLE returns(returnid INT PRIMARY KEY AUTO_INCREMENT, memberid INT, accno INT, returndate DATE, fine INT DEFAULT 0 CHECK(fine >= 0), FOREIGN KEY(memberid) REFERENCES members(memberid),FOREIGN KEY(accno) REFERENCES books(accno));
