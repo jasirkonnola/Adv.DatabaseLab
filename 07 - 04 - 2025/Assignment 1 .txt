@@ -30,7 +30,7 @@ CREATE TABLE members(memberid INT PRIMARY KEY AUTO_INCREMENT,name VARCHAR(50) NO
 
 CREATE TABLE issues( issueid INT PRIMARY KEY AUTO_INCREMENT, memberid INT, accno INT,issuedate DATE, duedate DATE);
 ALTER TABLE issues ADD CONSTRAINT issues_fkey_accno FOREIGN KEY(accno) REFERENCES books(accno);
-ALTER TABLE issues ADD constraint issues_fkey_memberid FOREIGN KEY(memberid) REFERENCES members(memberid);
+ALTER TABLE issues ADD CONSTRAINT issues_fkey_memberid FOREIGN KEY(memberid) REFERENCES members(memberid);
 --
 -- Table structure for table returns
 --
@@ -51,3 +51,12 @@ ALTER TABLE returns ADD CONSTRAINT  returns_fkey_memberid FOREIGN KEY(memberid) 
 
 -- -----SQL query statments preceeded by the its question-------- # This line may be removed in the actual file
 -- -----Question number should be commented---------------#This line may be removed in the actual file
+
+
+
+INSERT INTO publishers(name,address)VALUES('Offices Books','Shahapur Jat,New Dehli'),('Times Classic','bheen Ghali,Dehli'),('Candid Book World','University Road Jammu'),('Frontpage','Kolkatta'),('Book Bank(India)','Geeta, Delhi');
+
+INSERT INTO books(title,author,price,type,availability,publisherid)VALUES('The Adventure of Tom Sawyer','Mark Twain',99.99,"lending","yes",1),('Treasure Island','Robert Louis',79.99,"reference","no",2),('Pride and Prejudice','Jane Austen',69.99,"lending","yes",3),('One Piece','Eiichrio Oda',99.99,"lending","yes",5),("Bleach","Tite Kubo",49.99,"lending","no",4);
+
+
+INSERT INTO members (name, address, type) VALUES('Fasil', 'Kochi', 'student'),('Krishnan', 'Thiruvananthapuram', 'staff'),('Vishnu', 'Kozhikode', 'student'),('Raj', 'Thrissur', 'staff'),('Varma', 'Kannur', 'student');
