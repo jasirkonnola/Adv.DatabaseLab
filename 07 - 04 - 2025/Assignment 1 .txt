@@ -1,11 +1,53 @@
+-- 
+-- Roll No: 23
+-- Name: Jasir Hassan K
+-- Program: 
+-- 
+
+
+--
+-- Table structure for table books
+--
+
 CREATE TABLE books (accno INT PRIMARY KEY AUTO_INCREMENT,title VARCHAR(100) NOT NULL UNIQUE,author VARCHAR(50) NOT NULL,price FLOAT(4,2),type ENUM('lending','reference'),availability ENUM('yes','no'),publisherid INT);
+ALTER TABLE books ADD CONSTRAINT  books_fkey_publisherid foreign key(publisherid) references publishers(publisherid);
+
+--
+-- Table structure for table publishers
+--
 
 CREATE TABLE publishers(publisherid INT AUTO_INCREMENT, name VARCHAR(50) UNIQUE NOTNULL, address VARCHAR(100));
-alter table books add constraint books_fkey_publisherid foreign key(publisherid) references publishers(publisherid);
+
+--
+-- Table structure for table members
+--
 
 CREATE TABLE members(memberid INT PRIMARY KEY AUTO_INCREMENT,name VARCHAR(50) NOT NULL, address VARCHAR(100), type ENUM('staff','student'));
 
-CREATE TABLE issues( issueid INT PRIMARY KEY AUTO_INCREMENT, memberid INT, accno INT,issuedate DATE, duedate DATE,FOREIGN KEY(memberid) REFERENCES members(member
-id),FOREIGN KEY(accno) REFERENCES books(accno));
+--
+-- Table structure for table issues
+--
 
-CREATE TABLE returns(returnid INT PRIMARY KEY AUTO_INCREMENT, memberid INT, accno INT, returndate DATE, fine INT DEFAULT 0 CHECK(fine >= 0), FOREIGN KEY(memberid) REFERENCES members(memberid),FOREIGN KEY(accno) REFERENCES books(accno));
+CREATE TABLE issues( issueid INT PRIMARY KEY AUTO_INCREMENT, memberid INT, accno INT,issuedate DATE, duedate DATE);
+ALTER TABLE issues ADD CONSTRAINT issues_fkey_accno FOREIGN KEY(accno) REFERENCES books(accno);
+ALTER TABLE issues ADD constraint issues_fkey_memberid FOREIGN KEY(memberid) REFERENCES members(memberid);
+--
+-- Table structure for table returns
+--
+
+CREATE TABLE returns(returnid INT PRIMARY KEY AUTO_INCREMENT, memberid INT, accno INT, returndate DATE, fine INT DEFAULT 0 CHECK(fine >= 0));
+ALTER TABLE returns ADD CONSTRAINT  returns_fkey_accno FOREIGN KEY(accno) REFERENCES books(accno);
+ALTER TABLE returns ADD CONSTRAINT  returns_fkey_memberid FOREIGN KEY(memberid) REFERENCES members(memberid);
+
+--
+-- Dumping data for table <table_name>
+--
+
+-- --------insert/update statement commands----------- # This line may be removed in the actcual file
+
+--
+-- SQl Query Statements
+--
+
+-- -----SQL query statments preceeded by the its question-------- # This line may be removed in the actual file
+-- -----Question number should be commented---------------#This line may be removed in the actual file
