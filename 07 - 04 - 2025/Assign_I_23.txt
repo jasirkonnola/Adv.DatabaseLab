@@ -9,7 +9,7 @@
 -- Table structure for table books
 --
 
-CREATE TABLE books (accno INT PRIMARY KEY AUTO_INCREMENT,title VARCHAR(100) NOT NULL UNIQUE,author VARCHAR(50) NOT NULL,price FLOAT(4,2),type ENUM('lending','reference'),availability ENUM('yes','no'),publisherid INT);
+CREATE TABLE books (accno INT PRIMARY KEY AUTO_INCREMENT,title VARCHAR(100) NOT NULL UNIQUE,author VARCHAR(50) NOT NULL,price FLOAT(6,2),type ENUM('lending','reference'),availability ENUM('yes','no'),publisherid INT);
 ALTER TABLE books ADD CONSTRAINT  books_fkey_publisherid foreign key(publisherid) references publishers(publisherid);
 
 --
