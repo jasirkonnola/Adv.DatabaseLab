@@ -74,8 +74,20 @@ Query OK, 1 row affected (0.01 sec)
 INOUT Parameter
 ---------------
 DELIMITER //
-CREATE PROCEDURE  
+CREATE PROCEDURE listbooknamewithaccno(INOUT val VARCHAR(100))
+BEGIN
+SELECT title INTO val FROM books WHERE accno = val; 
+END //
+DELIMITER ;
+SEt @val = '6';
+CALL listbooknamewithaccno(@val);
+SELECT @val ;
 
++-----------------------------+
+| @val                        |
++-----------------------------+
+| The Adventure of Tom Sawyer |
++-----------------------------+
 ============================================================
 To View Procedure in the 
 SHOW PROCEDURE STATUS WHERE DB = '24mca23';
