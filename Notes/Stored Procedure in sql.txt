@@ -1,3 +1,6 @@
+16-04-2025
+-----------
+
 
 stored proceddure in mysql
 1)Procedure\
@@ -13,10 +16,67 @@ create procedure <procedure name>
 //end
 
 eg:-
-SELECT * FROM employee;
+SELECT * FROM books;
 DELIMITER //
-   CREATE PROCEDURE list_employee()
-BEGIN
-    SELECT * FROM employee;
-END //
+   CREATE PROCEDURE listbooks()              ------------------> Procedure Header
+BEGIN                                            --+
+    SELECT * FROM books;                           |-----------> Procedure Body
+END //                                           --+
 DELIMITER;
+
+To Call the Procedure
+CALL <procedure name>;
+eg:- 
+  CALL listbooks;
+
+pronged procedure
+=================
+
+IN 
+OUT
+INOUT
+=========================================================
+IN Parameter
+-------------
+DELIMITER //
+    CREATE PROCEDURE listbookswithaccno(IN acc_no INT)
+BEGIN
+    SELECT * FROM books WHERE accno =
+END //
+DELIMITER ;
+CALL listbookswithaccno(10);
++-------+--------+-----------+-------+---------+--------------+-------------+
+| accno | title  | author    | price | type    | availability | publisherid |
++-------+--------+-----------+-------+---------+--------------+-------------+
+|    10 | Bleach | Tite Kubo | 49.99 | lending | no           |           4 |
++-------+--------+-----------+-------+---------+--------------+-------------+
+
+===========================================================
+OUT Parameter
+-------------
+SELECT name from books WHERE  accno = 10;
+------------------------------------------
+DELIMITER //
+CREATE PROCEDURE Printbookname(OUT bname VARCHAR(100))
+BEGIN
+SELECT title INTO bname FROM books WHERE accno = 10;
+END //
+DELIMITER ;
+CALL Printbookname(@bname) ; SELECT @bname AS bookname;
+Query OK, 1 row affected (0.01 sec)
+
++----------+
+| bookname |
++----------+
+| Bleach   |
++----------+
+============================================================
+INOUT Parameter
+---------------
+DELIMITER //
+CREATE PROCEDURE  
+
+============================================================
+To View Procedure in the 
+SHOW PROCEDURE STATUS WHERE DB = '24mca23';
+=============================================================
