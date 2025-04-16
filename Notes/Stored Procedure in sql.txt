@@ -1,0 +1,22 @@
+
+stored proceddure in mysql
+1)Procedure\
+2)Function
+3)Trigger
+4)
+
+function
+select * from employee;
+create procedure <procedure name> 
+//begin
+  SQL statement;
+//end
+
+eg:-
+SELECT * FROM employee;
+DELIMITER //
+   CREATE PROCEDURE list_employee()
+BEGIN
+    SELECT * FROM employee;
+END //
+DELIMITER;
