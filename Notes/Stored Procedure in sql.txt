@@ -3,11 +3,11 @@
 
 
 stored proceddure in mysql
-1)Procedure\
+1)Procedure
 2)Function
 3)Trigger
 4)
-
+1))
 function
 select * from employee;
 create procedure <procedure name> 
@@ -15,7 +15,8 @@ create procedure <procedure name>
   SQL statement;
 //end
 
-eg:-
+Syntax :-
+
 SELECT * FROM books;
 DELIMITER //
    CREATE PROCEDURE listbooks()              ------------------> Procedure Header
@@ -92,3 +93,34 @@ SELECT @val ;
 To View Procedure in the 
 SHOW PROCEDURE STATUS WHERE DB = '24mca23';
 =============================================================
+
+2))
+
+Stored Functions
+----------------
+
+Syntax:-
+
+DELIMITER //
+CREATE FUNCTION <function_name> (Para1 INT, para2 VARCHAR(100) ,.....)
+RETURNS <data_type>
+{NO SQL | READS SQL DATA | DETERMINISTIC }
+BEGIN
+DECLARE <Var_name> <data_type>;
+-- SQL statements
+RETURNS <Var_name>;
+END //
+DELIMITER ;
+
+eg:-
+
+DELIMITER //
+CREATE FUNCTION listbook()
+RETURNS VARCHAR(100)
+READS SQL DATA
+BEGIN
+DECLARE bname VARCHAR(100);
+SELECT title INTO bname WHERE accno =1 ;
+RETURNS bname;
+END //
+DELIMITER ;
