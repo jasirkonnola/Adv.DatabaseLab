@@ -26,5 +26,7 @@ select books.title,books.author,count(issues.accno) as NumberofIssue from books 
 select members.name,count(issues.accno) as NumberofIssue from members inner join issues on members.memberid = issues.memberid where issues.accno < 2 group by members.name;
 --Q10. Retrieve books (include title, author) that have not been issued yet. 
 select books.title,books.author from books left join issues on books.accno = issues.accno where issues.accno is null;
+--Q11. Retrieve the top 5 most issued books (include title, author, TotalIssued).
+select books.title,books.author,count(issues.accno) as TotalIssued from books join issues order by TotalIssued desc limit 5;
 -- -----SQL query statments preceeded by the its question-------- # This line may be removed in the actual file
 -- -----Question number should be commented---------------#This line may be removed in the actual file
