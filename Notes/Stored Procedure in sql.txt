@@ -110,7 +110,7 @@ BEGIN
 DECLARE <Var_name> <data_type>;
 -- SQL statements
 RETURNS <Var_name>;
-END //
+END //   
 DELIMITER ;
 
 eg:-
@@ -125,4 +125,71 @@ SELECT title INTO bname WHERE accno =1 ;
 RETURNS bname;
 END //
 DELIMITER ;
+==============================================================================
+30-04-2025
+----------
+3)) Trigger
+
+Event:-
+1. Insert
+2. Update
+3. Delete
+
+action
+--> Before
+--> After
+
+before insert 
+after insert
+before update
+after update
+
+
+CREATE TRIGGER trigger_name
+<AFTER/BEFORE> <INSERT/UPDATE/DELETE> ON table_name
+ 
+BEGIN
+    -- Your instructions here
+END;
+
+
+operators that are used inside the event
+-> NEW
+-> OLD
+
+CREATE TRIGGER checkprice 
+BEFORE UPDATE ON books 
+FOR EACH ROW 
+BEGIN
+    IF NEW.price > 1000 THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Price cannot exceed 1000';
+    END IF;
+END;
+
+?)create a function to display the price of a book
+
+DELIMITER //
+
+CREATE FUNCTION priceofbook(accid INT) 
+RETURNS FLOAT(6,2) 
+DETERMINISTIC 
+RETURN(SELECT price FROM books WHERE accno = accid)
+
+//
+DELIMITER ;
+
+?)create a function to calculate and returns the total fine amount
+
+CREATE FUNCTION calculateprice() 
+RETURNS INT
+DETERMINISTIC 
+FOR EACH ROW
+BEGIN
+DECLARE hprice 
+
+//
+create a trigger to set availablitiy to NO a book is issued
+
+
 
