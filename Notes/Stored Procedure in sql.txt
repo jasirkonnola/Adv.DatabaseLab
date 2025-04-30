@@ -6,7 +6,8 @@ stored proceddure in mysql
 1)Procedure
 2)Function
 3)Trigger
-4)
+4)cursors
+
 1))
 function
 select * from employee;
@@ -124,3 +125,4 @@ SELECT title INTO bname WHERE accno =1 ;
 RETURNS bname;
 END //
 DELIMITER ;
+
