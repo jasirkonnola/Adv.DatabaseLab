@@ -122,7 +122,7 @@ READS SQL DATA
 BEGIN
 DECLARE bname VARCHAR(100);
 SELECT title INTO bname WHERE accno =1 ;
-RETURNS bname;
+RETURN bname;
 END //
 DELIMITER ;
 ==============================================================================
