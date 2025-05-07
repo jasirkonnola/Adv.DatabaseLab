@@ -1,0 +1,1 @@
+db.orders.insertOne({order_no:"O1",year:2020,paid:"Y",cost:{price:30,currency:"INR"},items:[{pno:"P1",curreny:"blue,black",quantiy:15}],delivery_days:5})
