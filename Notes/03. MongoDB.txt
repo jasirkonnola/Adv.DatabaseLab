@@ -120,4 +120,7 @@ db.student.find().sort({name:1}) ----->ascending
 db.student.find().sort({name:-1}) ---->descending
 
 db.student.find().count() -------> get total record
-db.student.find().limit(3) ------> displays f
+db.student.find().limit(3) ------> displays first n number record
+
+db.student.createIndex({rollno:1},{unique:true})
+               ↳ set a unique key on rollno
