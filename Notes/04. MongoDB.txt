@@ -11,3 +11,18 @@ and/or
 
 db.orders.find({ "cost.currency" :"INR"})
 
+
+aggregate frame in MongoDB
+---------------------------
+is pipeline
+
+$match
+$project
+$filter
+$group
+$sort
+$limit
+
+// document(10)------>$match(5)------>$project------->group
+
+
