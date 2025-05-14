@@ -1,0 +1,4 @@
+push value into attribute
+-------------------------
+
+db.order.updateOne({order_no:"O1"},{$push:{colors:"blue"}})
