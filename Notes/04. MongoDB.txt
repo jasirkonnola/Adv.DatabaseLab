@@ -1,0 +1,13 @@
+push value into attribute
+-------------------------
+
+db.order.updateOne({order_no:"O1"},{ $push :{colors:"blue"}})
+
+and/or
+--------
+ db.orders.find({ $and :[{ paid: "N"},{year:{$lt : 2019}}]})
+ db.orders.find({ $or  :[{ paid: "N"},{year:{$lt : 2019}}]})
+
+
+db.orders.find({ "cost.currency" :"INR"})
+
